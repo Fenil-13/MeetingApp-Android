@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeetingApp">
         <activity
+            android:name=".activities.registration.RegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
@@ -24,8 +27,7 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

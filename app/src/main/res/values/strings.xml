@@ -3,4 +3,7 @@
     <string name="send_otp">Send Otp</string>
     <string name="otp">Otp</string>
     <string name="phone_number">Phone Number</string>
+    <string name="username">Username</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
 </resources>

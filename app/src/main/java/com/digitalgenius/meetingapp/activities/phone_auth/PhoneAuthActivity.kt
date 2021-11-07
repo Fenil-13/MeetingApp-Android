@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.digitalgenius.meetingapp.HomeActivity
 import com.digitalgenius.meetingapp.R
+import com.digitalgenius.meetingapp.activities.registration.RegistrationActivity
 import com.digitalgenius.meetingapp.databinding.ActivityPhoneAuthBinding
 import com.digitalgenius.meetingapp.utilities.*
 
@@ -44,8 +45,7 @@ class PhoneAuthActivity : AppCompatActivity() {
             if (it) {
                 saveLoginDetails()
                 displayToast("Verification Successfully")
-                startActivity(Intent(this@PhoneAuthActivity, HomeActivity::class.java))
-                finish()
+                goToRegistrationActivity()
             }
         })
 
@@ -63,6 +63,11 @@ class PhoneAuthActivity : AppCompatActivity() {
 
             }
         }
+    }
+
+    private fun goToRegistrationActivity() {
+        startActivity(Intent(this@PhoneAuthActivity, RegistrationActivity::class.java))
+        finish()
     }
 
     private fun initUi() {

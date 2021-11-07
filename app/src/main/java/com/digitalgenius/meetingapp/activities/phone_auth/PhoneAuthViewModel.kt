@@ -2,12 +2,9 @@ package com.digitalgenius.meetingapp.activities.phone_auth
 
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.digitalgenius.meetingapp.HomeActivity
-import com.digitalgenius.meetingapp.utilities.SharedPrefManager
+import com.digitalgenius.meetingapp.utilities.Veriables
 import com.digitalgenius.meetingapp.utilities.displayToast
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -73,6 +70,7 @@ class PhoneAuthViewModel(val context: Context) : ViewModel() {
         auth.signInWithCredential(credential)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
+                    Veriables.firebaseUser=it.result?.user!!
                     isVerificationDone.postValue(true)
                 } else {
                     (context as Activity).displayToast("Invalid OTP")
