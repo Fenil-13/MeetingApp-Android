@@ -3,6 +3,7 @@ package com.digitalgenius.meetingapp.api.services
 import com.digitalgenius.meetingapp.api.requests.AddUserRequest
 import com.digitalgenius.meetingapp.api.requests.CreateMeetingRequest
 import com.digitalgenius.meetingapp.api.requests.GetMeetingByDateRequest
+import com.digitalgenius.meetingapp.api.requests.UpdateMeetingRequest
 import com.digitalgenius.meetingapp.api.responses.AddUserResponse
 import com.digitalgenius.meetingapp.api.responses.CreateMeetingResponse
 import com.digitalgenius.meetingapp.api.responses.GetAllMeetingResponse
@@ -40,7 +41,7 @@ interface MeetingAppAPI {
 
     @Headers( "Content-Type: application/json" )
     @POST("/updatemeeting")
-    fun updateMeeting(@Body createMeetingResponse: CreateMeetingResponse
+    fun updateMeeting(@Body updateMeetingRequest: UpdateMeetingRequest
     ): Call<CreateMeetingResponse>
 
     @Headers( "Content-Type: application/json" )

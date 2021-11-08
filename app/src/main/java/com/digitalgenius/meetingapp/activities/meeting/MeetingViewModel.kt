@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.digitalgenius.meetingapp.api.MeetingAppClient
 import com.digitalgenius.meetingapp.api.requests.CreateMeetingRequest
+import com.digitalgenius.meetingapp.api.requests.UpdateMeetingRequest
 import com.digitalgenius.meetingapp.api.responses.CreateMeetingResponse
 import com.digitalgenius.meetingapp.utilities.Veriables
 import retrofit2.Call
@@ -39,7 +40,7 @@ class MeetingViewModel:ViewModel() {
 
     }
 
-    fun updateMeeting(updateMeetingRequest: CreateMeetingResponse) {
+    fun updateMeeting(updateMeetingRequest: UpdateMeetingRequest) {
         val response = MeetingAppClient.publicApi.updateMeeting(updateMeetingRequest)
         response.enqueue(object :
             retrofit2.Callback<CreateMeetingResponse> {
@@ -47,6 +48,7 @@ class MeetingViewModel:ViewModel() {
                 call: Call<CreateMeetingResponse>,
                 response: Response<CreateMeetingResponse>
             ) {
+                Log.d(Veriables.TAG, "onResponse: ${response.raw()}")
                 if(response.isSuccessful){
                     Log.d(Veriables.TAG, "onResponse: ${response.body()?.id}")
                     meetingCreated.postValue("Updated")

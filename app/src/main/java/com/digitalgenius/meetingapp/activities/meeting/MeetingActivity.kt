@@ -5,11 +5,13 @@ import android.app.TimePickerDialog
 import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.DatePicker
 import android.widget.TimePicker
 import androidx.lifecycle.ViewModelProvider
 import com.digitalgenius.meetingapp.R
 import com.digitalgenius.meetingapp.api.requests.CreateMeetingRequest
+import com.digitalgenius.meetingapp.api.requests.UpdateMeetingRequest
 import com.digitalgenius.meetingapp.api.responses.CreateMeetingResponse
 import com.digitalgenius.meetingapp.databinding.ActivityMeetingBinding
 import com.digitalgenius.meetingapp.utilities.Functions
@@ -18,6 +20,7 @@ import com.digitalgenius.meetingapp.utilities.Veriables
 import com.digitalgenius.meetingapp.utilities.displayToast
 import java.text.DateFormat
 import java.util.*
+import kotlin.math.log
 
 class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     private lateinit var binding: ActivityMeetingBinding
@@ -42,26 +45,24 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
             binding.tvEndTime.text = Veriables.currentMeeting!!.endtime
             binding.tvMeetingDate.text = Veriables.currentMeeting!!.meetingdate
             binding.ivAddMeeting.text = "Update Meeting"
+            binding.tvHeading.text = "Update Meeting"
         }
     }
 
     private fun setListener() {
         binding.ivAddMeeting.setOnClickListener {
             if (checkFrom()) {
-
-
-
-
+                Log.d(Veriables.TAG, "setListener: ${Veriables.currentMeeting.toString()}")
                 if (binding.ivAddMeeting.text.toString()=="Update Meeting"){
-                    val updateMeetingRequest = CreateMeetingResponse(
+                    val updateMeetingRequest = UpdateMeetingRequest(
                         binding.etMeetingAttendee.text.toString(),
                         binding.tvEndTime.text.toString(),
                         Veriables.addUserResponse!!.userEmail,
-                        SharedPrefManager.getInstance(applicationContext).getStringData("id").toInt(),
+                        Veriables.currentMeeting!!.id!!,
                         binding.tvMeetingDate.text.toString(),
+                        binding.etMeetingLink.text.toString(),
                         binding.etMeetingName.text.toString(),
-                        binding.tvStartTime.text.toString(),
-                        binding.etMeetingLink.text.toString()
+                        binding.tvStartTime .text.toString()
                     )
                     Functions.showProgressDialog(this@MeetingActivity, "Updating Meeting")
                     meetingViewModel.updateMeeting(updateMeetingRequest)

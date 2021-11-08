@@ -74,6 +74,10 @@ class HomeFragment : Fragment() {
                             Veriables.currentMeeting=viewModel.data[position]
                             startActivity(meetingActivity)
                         }
+
+                        override fun onShare(position: Int) {
+                            shareMeeting(position)
+                        }
                     })
                     binding.rvMyMeeting.apply {
                         layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.VERTICAL,false)
@@ -104,6 +108,21 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun shareMeeting(position: Int) {
+        val data = viewModel.data[position]
+        val shareText =
+            "Hello Friends,\n I schedule Meeting about ${data.meetingtitle} at ${data.starttime} to ${data.endtime}.I heartly invite to you.\n\n" +
+                    "Join through below link\n" +
+                    "${data.meetinglink}\n\n" +
+                    "Meet you in meeting.Thanks for Support."
+
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "text/plain";
+        intent.putExtra(Intent.EXTRA_TEXT, shareText);
+        startActivity(Intent.createChooser(intent, "Share Meeting Details"));
+    }
+
     private fun setUpViews() {
         meetingAdapter= MeetingAdapter(requireContext(),viewModel.data,object :MeetingClickListener{
             override fun onClick(position: Int) {
@@ -119,6 +138,10 @@ class HomeFragment : Fragment() {
                 meetingActivity.putExtra("type","edit")
                 Veriables.currentMeeting=viewModel.data[position]
                 startActivity(meetingActivity)
+            }
+
+            override fun onShare(position: Int) {
+                shareMeeting(position)
             }
         })
 

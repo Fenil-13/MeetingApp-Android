@@ -37,6 +37,9 @@ class MeetingAdapter(
             ivEdit.setOnClickListener {
                 clickListener.onUpdate(position)
             }
+            ivShare.setOnClickListener {
+                clickListener.onShare(position)
+            }
         }
     }
 

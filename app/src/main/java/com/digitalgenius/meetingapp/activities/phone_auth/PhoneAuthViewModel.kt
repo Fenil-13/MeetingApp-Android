@@ -45,7 +45,6 @@ class PhoneAuthViewModel(val context: Context) : ViewModel() {
                         } else {
                             (context as Activity).displayToast("Invalid OTP")
                         }
-                        isOtpSend.postValue(true)
                         isVerificationDone.postValue(true)
                     }.addOnFailureListener {
                         (context as Activity).displayToast("Something Went wrong..")
