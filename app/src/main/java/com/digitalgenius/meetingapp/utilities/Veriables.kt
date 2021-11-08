@@ -1,8 +1,10 @@
 package com.digitalgenius.meetingapp.utilities
 
-import com.google.firebase.auth.FirebaseAuth
+import com.digitalgenius.meetingapp.api.responses.AddUserResponse
 import com.google.firebase.auth.FirebaseUser
 
 object Veriables {
-    lateinit var firebaseUser: FirebaseUser
+    var firebaseUser: FirebaseUser?=null
+    var addUserResponse: AddUserResponse?=null
+    val TAG="MeetingTag"
 }

@@ -11,8 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MeetingApp">
         <activity
-            android:name=".activities.registration.RegistrationActivity"
+            android:name=".activities.meeting.MeetingActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.registration.RegistrationActivity"
+            android:exported="false">
+
+        </activity>
         <activity
             android:name=".activities.splash.SplashActivity"
             android:exported="true">
@@ -26,8 +31,10 @@
             android:name=".activities.phone_auth.PhoneAuthActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
-            android:exported="false"></activity>
+            android:name=".activities.home.HomeActivity"
+            android:exported="false">
+
+        </activity>
     </application>
 
 </manifest>

@@ -4,13 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
-import com.digitalgenius.meetingapp.HomeActivity
-import com.digitalgenius.meetingapp.R
+import com.digitalgenius.meetingapp.activities.home.HomeActivity
 import com.digitalgenius.meetingapp.activities.phone_auth.PhoneAuthActivity
-import com.digitalgenius.meetingapp.databinding.ActivityPhoneAuthBinding
+import com.digitalgenius.meetingapp.api.responses.AddUserResponse
 import com.digitalgenius.meetingapp.databinding.ActivitySplashBinding
 import com.digitalgenius.meetingapp.utilities.SharedPrefManager
+import com.digitalgenius.meetingapp.utilities.Veriables
 
 class SplashActivity : AppCompatActivity() {
     var _binding: ActivitySplashBinding? = null
@@ -26,11 +25,23 @@ class SplashActivity : AppCompatActivity() {
                 val sharedPrefManager =
                     SharedPrefManager.getInstance(applicationContext)
                 if (sharedPrefManager.getStringData("Login").equals("True")) {
+                    setProfileData()
                     goToHomeActivity()
                 } else {
                     goToAuthActivity()
                 }
             }, 2000
+        )
+    }
+
+    private fun setProfileData() {
+        val sharedPrefManager: SharedPrefManager =
+            SharedPrefManager.getInstance(applicationContext)
+        Veriables.addUserResponse = AddUserResponse(
+            (sharedPrefManager.getStringData("id")).toInt(),
+            sharedPrefManager.getStringData("userAuthid"),
+            sharedPrefManager.getStringData("userEmail"),
+            sharedPrefManager.getStringData("userName")
         )
     }
 

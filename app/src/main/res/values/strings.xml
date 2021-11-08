@@ -6,4 +6,17 @@
     <string name="username">Username</string>
     <string name="sign_up">Sign Up</string>
     <string name="email">Email</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_report">Report</string>
+    <string name="my_meeting">My Meeting</string>
+    <string name="no_upcoming_meeting">No Upcoming meeting</string>
+    <string name="github_link">https://github.com/Fenil-13/MeetingApp-Android</string>
+    <string name="privacy_policy">https://www.dummies.com/privacy-policy/</string>
+    <string name="term_and_condition">https://www.lipsum.com/privacy.pdf</string>
+    <string name="weekly">Weekly</string>
+    <string name="meeting_name">Meeting Name</string>
+    <string name="meeting_description">Meeting Description</string>
+    <string name="meeting_link">Meeting Link</string>
+    <string name="meeting_attendee">Meeting Attendee</string>
 </resources>

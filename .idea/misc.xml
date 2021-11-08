@@ -5,14 +5,32 @@
       <map>
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/bg_blue_border_rounded_corner.xml" value="0.3425925925925926" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/bg_blue_fill__rounded_color.xml" value="0.3425925925925926" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/bg_primary.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/edit_text_round_bg_white.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_add.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_close.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_cursor_color.xml" value="0.3425925925925926" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_expand_arrow.xml" value="0.32222222222222224" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_otp.xml" value="0.3425925925925926" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_person.xml" value="0.3425925925925926" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_phone.xml" value="0.3425925925925926" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_show_chart.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/ic_term.xml" value="0.32685185185185184" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/drawable/line_dash_grey_20.xml" value="0.32222222222222224" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_dashboard_cryptocurrency.xml" value="0.16372351160443996" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_form_ecommerce.xml" value="0.23143115942028986" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_home.xml" value="0.14175724637681159" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_main.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_meeting.xml" value="0.23143115942028986" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_phone_auth.xml" value="0.25" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_registration.xml" value="0.259963768115942" />
         <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/activity_splash.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/dialog_meeting.xml" value="0.23143115942028986" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/home_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/item_meeting.xml" value="0.33" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/profile_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/layout/report_fragment.xml" value="0.23143115942028986" />
+        <entry key="..\:/Users/Fenil/AndroidStudioProjects/MeetingApp/app/src/main/res/menu/home_bottom_nav_menu.xml" value="0.3380208333333333" />
       </map>
     </option>
   </component>
