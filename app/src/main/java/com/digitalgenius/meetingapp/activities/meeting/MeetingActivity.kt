@@ -10,8 +10,10 @@ import android.widget.TimePicker
 import androidx.lifecycle.ViewModelProvider
 import com.digitalgenius.meetingapp.R
 import com.digitalgenius.meetingapp.api.requests.CreateMeetingRequest
+import com.digitalgenius.meetingapp.api.responses.CreateMeetingResponse
 import com.digitalgenius.meetingapp.databinding.ActivityMeetingBinding
 import com.digitalgenius.meetingapp.utilities.Functions
+import com.digitalgenius.meetingapp.utilities.SharedPrefManager
 import com.digitalgenius.meetingapp.utilities.Veriables
 import com.digitalgenius.meetingapp.utilities.displayToast
 import java.text.DateFormat
@@ -27,27 +29,57 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
         binding = ActivityMeetingBinding.inflate(layoutInflater)
         setContentView(binding.root)
         meetingViewModel = ViewModelProvider(this)[MeetingViewModel::class.java]
+        initViews()
         setListener()
+    }
+
+    private fun initViews() {
+        if(intent.getStringExtra("type")=="edit"){
+            binding.etMeetingName.setText(Veriables.currentMeeting!!.meetingtitle)
+            binding.etMeetingLink.setText(Veriables.currentMeeting!!.meetinglink)
+            binding.etMeetingAttendee.setText(Veriables.currentMeeting!!.attandeeUserEmails)
+            binding.tvStartTime.text = Veriables.currentMeeting!!.starttime
+            binding.tvEndTime.text = Veriables.currentMeeting!!.endtime
+            binding.tvMeetingDate.text = Veriables.currentMeeting!!.meetingdate
+            binding.ivAddMeeting.text = "Update Meeting"
+        }
     }
 
     private fun setListener() {
         binding.ivAddMeeting.setOnClickListener {
-            onBackPressed()
-            finish()
-        }
-        binding.ivAddMeeting.setOnClickListener {
             if (checkFrom()) {
-                val createMeetingRequest = CreateMeetingRequest(
-                    "fjmoradiya@gmail.com",
-                    binding.tvEndTime.text.toString(),
-                    Veriables.addUserResponse!!.userEmail,
-                    binding.tvMeetingDate.text.toString(),
-                    binding.etMeetingName.text.toString(),
-                    binding.tvStartTime.text.toString(),
-                    binding.etMeetingLink.text.toString()
-                )
-                Functions.showProgressDialog(this@MeetingActivity, "Creating Meeting")
-                meetingViewModel.createMeeting(createMeetingRequest)
+
+
+
+
+                if (binding.ivAddMeeting.text.toString()=="Update Meeting"){
+                    val updateMeetingRequest = CreateMeetingResponse(
+                        binding.etMeetingAttendee.text.toString(),
+                        binding.tvEndTime.text.toString(),
+                        Veriables.addUserResponse!!.userEmail,
+                        SharedPrefManager.getInstance(applicationContext).getStringData("id").toInt(),
+                        binding.tvMeetingDate.text.toString(),
+                        binding.etMeetingName.text.toString(),
+                        binding.tvStartTime.text.toString(),
+                        binding.etMeetingLink.text.toString()
+                    )
+                    Functions.showProgressDialog(this@MeetingActivity, "Updating Meeting")
+                    meetingViewModel.updateMeeting(updateMeetingRequest)
+                }else{
+                    val createMeetingRequest = CreateMeetingRequest(
+                        binding.etMeetingAttendee.text.toString(),
+                        binding.tvEndTime.text.toString(),
+                        Veriables.addUserResponse!!.userEmail,
+                        binding.tvMeetingDate.text.toString(),
+                        binding.etMeetingName.text.toString(),
+                        binding.tvStartTime.text.toString(),
+                        binding.etMeetingLink.text.toString()
+                    )
+                    Functions.showProgressDialog(this@MeetingActivity, "Creating Meeting")
+                    meetingViewModel.createMeeting(createMeetingRequest)
+                }
+
+
             }
         }
 
@@ -74,6 +106,12 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
                 "Error" -> {
                     Functions.dismissProgressDialog()
                     displayToast("Something went Wrong..Try other time slot")
+                }
+                "Updated"->{
+                    Functions.dismissProgressDialog()
+                    displayToast("updated Meeting Successfully")
+                    onBackPressed()
+                    finish()
                 }
             }
         }
@@ -118,23 +156,29 @@ class MeetingActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener 
 
     private fun checkFrom(): Boolean {
         if (binding.etMeetingName.text.toString().isEmpty()) {
+            displayToast("Enter the meeting title")
             return false
         } else if (binding.etMeetingLink.text.toString().isEmpty()) {
+            displayToast("Enter the meeting link")
             return false
         } else if (binding.etMeetingAttendee.text.toString().isEmpty()) {
+            displayToast("Enter the meeting attendee emails")
             return false
-        } else if (binding.tvStartTime.text.toString().isEmpty() && binding.tvStartTime.text.equals(
+        } else if (binding.tvStartTime.text.toString().isEmpty() || binding.tvStartTime.text.equals(
                 "Start Time"
             )
         ) {
+            displayToast("Enter the meeting start time")
             return false
         } else if (binding.tvEndTime.text.toString()
-                .isEmpty() && binding.tvEndTime.text.equals("End Time")
+                .isEmpty() || binding.tvEndTime.text.equals("End Time")
         ) {
+            displayToast("Enter the meeting end time")
             return false
         } else if (binding.tvMeetingDate.text.toString()
-                .isEmpty() && binding.tvMeetingDate.text!!.equals("Meeting Date")
+                .isEmpty() || binding.tvMeetingDate.text!!.equals("Meeting Date")
         ) {
+            displayToast("Enter the meeting date")
             return false
         }
 

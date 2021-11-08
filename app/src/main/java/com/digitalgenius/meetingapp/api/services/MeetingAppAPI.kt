@@ -2,8 +2,10 @@ package com.digitalgenius.meetingapp.api.services
 
 import com.digitalgenius.meetingapp.api.requests.AddUserRequest
 import com.digitalgenius.meetingapp.api.requests.CreateMeetingRequest
+import com.digitalgenius.meetingapp.api.requests.GetMeetingByDateRequest
 import com.digitalgenius.meetingapp.api.responses.AddUserResponse
 import com.digitalgenius.meetingapp.api.responses.CreateMeetingResponse
+import com.digitalgenius.meetingapp.api.responses.GetAllMeetingResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers
@@ -27,5 +29,23 @@ interface MeetingAppAPI {
     fun createMeeting(@Body createMeetingRequest: CreateMeetingRequest
     ): Call<CreateMeetingResponse>
 
+
+    @Headers("Content-Type: application/json")
+    @POST("/getallmeetings")
+    fun getAllMeetings(@Body addUserResponse: AddUserResponse):Call<GetAllMeetingResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("/deletemeeting")
+    fun deleteMeeting(@Body createMeetingResponse: CreateMeetingResponse):Call<Void>
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/updatemeeting")
+    fun updateMeeting(@Body createMeetingResponse: CreateMeetingResponse
+    ): Call<CreateMeetingResponse>
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/getallmeetingsbydate")
+    fun getAllMeetingByDate(@Body getMeetingByDateRequest: GetMeetingByDateRequest
+    ): Call<GetAllMeetingResponse>
 
 }

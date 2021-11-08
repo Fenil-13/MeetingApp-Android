@@ -1,5 +1,7 @@
-package com.digitalgenius.meetingapp.interfaces;
+package com.digitalgenius.meetingapp.interfaces
 
-public interface MeetingClickListener {
-    public void onClick(int position);
+interface MeetingClickListener {
+    fun onClick(position: Int)
+    fun onDelete(position: Int)
+    fun onUpdate(position: Int)
 }

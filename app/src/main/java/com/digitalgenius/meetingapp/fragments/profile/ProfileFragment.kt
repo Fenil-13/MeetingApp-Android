@@ -12,6 +12,7 @@ import com.digitalgenius.meetingapp.databinding.ProfileFragmentBinding
 import android.content.Intent
 import android.net.Uri
 import com.digitalgenius.meetingapp.activities.splash.SplashActivity
+import com.digitalgenius.meetingapp.utilities.Functions
 import com.digitalgenius.meetingapp.utilities.SharedPrefManager
 import com.digitalgenius.meetingapp.utilities.Veriables
 
@@ -64,4 +65,8 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        Functions.dismissProgressDialog()
+    }
 }

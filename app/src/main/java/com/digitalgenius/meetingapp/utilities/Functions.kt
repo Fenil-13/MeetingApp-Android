@@ -18,10 +18,13 @@ class Functions {
             }
         }
         fun dismissProgressDialog(){
-            pDialog?.apply {
-                dismissWithAnimation()
+            if(pDialog!=null){
+                pDialog?.apply {
+                    dismissWithAnimation()
+                }
+                pDialog=null
             }
-            pDialog=null
+
         }
     }
 }

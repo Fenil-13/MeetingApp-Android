@@ -17,9 +17,9 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/_30sdp"
             android:layout_height="wrap_content"
-            android:text="17/10"
+            android:text="17/10/2001"
             android:id="@+id/tvMeetingDate"
             android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
@@ -106,18 +106,34 @@
                         android:textColor="@color/grey_60"
                         android:textSize="12sp" />
 
+
+
                     <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
                         android:layout_weight="1" />
-
+                    <ImageView
+                        android:id="@+id/ivEdit"
+                        android:layout_width="@dimen/spacing_xmlarge"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:padding="@dimen/spacing_xmedium"
+                        app:srcCompat="@drawable/ic_edit"
+                        app:tint="@color/grey_60" />
                     <ImageView
                         android:id="@+id/ivShare"
                         android:layout_width="@dimen/spacing_xmlarge"
                         android:layout_height="@dimen/spacing_xmlarge"
-                        android:padding="@dimen/spacing_middle"
+                        android:padding="@dimen/spacing_xmedium"
                         app:srcCompat="@drawable/ic_share"
                         app:tint="@color/grey_60" />
+                    <ImageView
+                        android:id="@+id/ivDelete"
+                        android:layout_width="@dimen/spacing_xmlarge"
+                        android:layout_height="@dimen/spacing_xmlarge"
+                        android:padding="@dimen/spacing_xmedium"
+                        app:srcCompat="@drawable/ic_delete"
+                        app:tint="@color/grey_60" />
+
 
                 </LinearLayout>
 

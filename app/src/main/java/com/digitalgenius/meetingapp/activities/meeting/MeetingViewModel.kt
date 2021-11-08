@@ -38,4 +38,28 @@ class MeetingViewModel:ViewModel() {
             })
 
     }
+
+    fun updateMeeting(updateMeetingRequest: CreateMeetingResponse) {
+        val response = MeetingAppClient.publicApi.updateMeeting(updateMeetingRequest)
+        response.enqueue(object :
+            retrofit2.Callback<CreateMeetingResponse> {
+            override fun onResponse(
+                call: Call<CreateMeetingResponse>,
+                response: Response<CreateMeetingResponse>
+            ) {
+                if(response.isSuccessful){
+                    Log.d(Veriables.TAG, "onResponse: ${response.body()?.id}")
+                    meetingCreated.postValue("Updated")
+                }else{
+                    meetingCreated.postValue("Error")
+                }
+
+            }
+
+            override fun onFailure(call: Call<CreateMeetingResponse>, t: Throwable) {
+                Log.d(Veriables.TAG, "onResponse: ${t.message}")
+                meetingCreated.postValue("Error")
+            }
+        })
+    }
 }
